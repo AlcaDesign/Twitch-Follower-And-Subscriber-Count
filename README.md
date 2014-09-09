@@ -34,10 +34,11 @@ Once you have run the program once, it should create a configuration file called
 #####Directly into a command prompt/terminal
 
 The basic way would be to open a command prompt/terminal and `cd` to the location of `followers.js` and run using `node`:
-`
+```
 $ cd followers
+
 $ node followers.js
-`
+```
 
 #####Folder Address Bar
 
