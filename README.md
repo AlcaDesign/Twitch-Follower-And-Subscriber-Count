@@ -11,7 +11,7 @@ Retrieves follower and/or subscriber information from the Twitch API and saves i
 * A Twitch account
     * Client ID from a registered application
     * An OAuth token if you want access to subscription data (optional)
-
+---
 ###Instructions
 
 ####Install Node.js&reg;
@@ -97,7 +97,7 @@ The file is formatted in [JSON](http://json.org/). There are plenty of online co
     1. "**%RAW_JSON%**" - The raw output from the Twitch API.
 * "**delay_sec**" - Number - Number of seconds to wait between requests to the Twitch API. `5` is the default value.
 * "**delay_to**" - Boolean - Can be ``true`` or `false`. `false` is the default value. This tells the program to send a request every `delay_sec` seconds (false) or `delay_sec` after the last request to the Twitch API (true). ("to" means timeout like setTimeout)
-
+---
 ####Twitch Application Registration And Retrieving The Client ID
 You may use an application you've already registered for the purpose of obtaining a client ID.
 
