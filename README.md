@@ -91,11 +91,11 @@ The file is formatted in [JSON](http://json.org/). There are plenty of online co
 * "**channel**" - String - The channel you want to access information for.
 * "**message_args**" - Array - This is merely a list of variables used in the message and changing or removing this does not affect the program.
 * "**message**" - String - What you want written to followers.txt by the program. You can use the variables in `message_args` to input infomation into your message.
-   * "**%COUNT%**" - The `channel`'s current number of followers as reported by the Twitch API.
-   * "**%CHANNEL%**" - The `channel` that it's checking for written exactly as it is in the config.
-   * "**%LAST_FOLLOWER%**" - The `display_name` of the last follower.
-   * "**%LAST_SUBSCRIBER%**" - The `display_name` of the last subscriber.
-   * "**%RAW_JSON%**" - The raw output from the Twitch API.
+  * "**%COUNT%**" - The `channel`'s current number of followers as reported by the Twitch API.
+  * "**%CHANNEL%**" - The `channel` that it's checking for written exactly as it is in the config.
+  * "**%LAST_FOLLOWER%**" - The `display_name` of the last follower.
+  * "**%LAST_SUBSCRIBER%**" - The `display_name` of the last subscriber.
+  * "**%RAW_JSON%**" - The raw output from the Twitch API.
 * "**delay_sec**" - Number - Number of seconds to wait between requests to the Twitch API. `5` is the default value.
 * "**delay_to**" - Boolean - Can be `true` or `false`. `false` is the default value. This tells the program to send a request every `delay_sec` seconds (false) or `delay_sec` after the last request to the Twitch API (true). ("to" means timeout like setTimeout)
 
@@ -103,13 +103,19 @@ The file is formatted in [JSON](http://json.org/). There are plenty of online co
 ####Twitch Application Registration And Retrieving The Client ID And OAuth Token
 You may use an application you've already registered for the purpose of obtaining a client ID and OAuth token.
 
-1. Go to [Twitch.tv](http://twitch.tv) and log in to your account.
-1. Go to the [settings](http://www.twitch.tv/settings).
-1. Go to the [Connections](http://www.twitch.tv/settings/connections) tab.
-1. At the bottom, click "[Register your application](http://www.twitch.tv/kraken/oauth2/clients/new)."
-1. Enter an application name like "Follow Count" and "http://localhost" for the "Redirect URI."
-1. Copy the client ID from the resulting page into the `config.json` file.
+* Obtain a client ID:
+  1. Go to [Twitch.tv](http://twitch.tv) and log in to your account.
+  1. Go to the [settings](http://www.twitch.tv/settings).
+  1. Go to the [Connections](http://www.twitch.tv/settings/connections) tab.
+  1. At the bottom, click "[Register your application](http://www.twitch.tv/kraken/oauth2/clients/new)."
+  1. Enter an application name like "Follow Count" and "http://localhost" for the "Redirect URI."
+  1. Copy the client ID from the resulting page into the `config.json` file.
+  
+  ```javascript
+  "client_id": "INSERT_CLIENT_ID_HERE",
+  ```
 
-```javascript
-"client_id": "*insert ID here*",
-```
+* Obtain an oauth token:
+  1. To get to an autorize page for your applicatio, load `https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=INSERT_CLIENT_ID_HERE&redirect_uri=http://localhost&scope=channel_subscriptions` in your browser. Replace `INSERT_CLIENT_ID_HERE` with your client ID you retrieved previously.
+
+  1. 
