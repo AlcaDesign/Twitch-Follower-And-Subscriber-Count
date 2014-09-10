@@ -90,13 +90,13 @@ The file is formatted in [JSON](http://json.org/). There are plenty of online co
 * "**channel**" - String - The channel you want to access information for.
 * "**message_args**" - Array - This is merely a list of variables used in the message and changing or removing this does not affect the program.
 * "**message**" - String - What you want written to followers.txt by the program. You can use the variables in `message_args` to input infomation into your message.
-    1. "**%COUNT%**" - The `channel`'s current number of followers as reported by the Twitch API.
-    1. "**%CHANNEL%**" - The `channel` that it's checking for written exactly as it is in the config.
-    1. "**%LAST_FOLLOWER%**" - The `display_name` of the last follower.
-    1. "**%LAST_SUBSCRIBER%**" - The `display_name` of the last subscriber.
-    1. "**%RAW_JSON%**" - The raw output from the Twitch API.
-* "**delay_sec**" - Number - Number of seconds to wait between requests to the Twitch API. `5` is the default value.
-* "**delay_to**" - Boolean - Can be ``true`` or `false`. `false` is the default value. This tells the program to send a request every `delay_sec` seconds (false) or `delay_sec` after the last request to the Twitch API (true). ("to" means timeout like setTimeout)
+   * "**%COUNT%**" - The `channel`'s current number of followers as reported by the Twitch API.
+   * "**%CHANNEL%**" - The `channel` that it's checking for written exactly as it is in the config.
+   * "**%LAST_FOLLOWER%**" - The `display_name` of the last follower.
+   * "**%LAST_SUBSCRIBER%**" - The `display_name` of the last subscriber.
+   * "**%RAW_JSON%**" - The raw output from the Twitch API.
+   * "**delay_sec**" - Number - Number of seconds to wait between requests to the Twitch API. `5` is the default value.
+   * "**delay_to**" - Boolean - Can be ``true`` or `false`. `false` is the default value. This tells the program to send a request every `delay_sec` seconds (false) or `delay_sec` after the last request to the Twitch API (true). ("to" means timeout like setTimeout)
 ---
 ####Twitch Application Registration And Retrieving The Client ID
 You may use an application you've already registered for the purpose of obtaining a client ID.
