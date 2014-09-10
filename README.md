@@ -116,21 +116,9 @@ You may use an application you've already registered for the purpose of obtainin
   ```
 
 * Obtain an oauth token: (optional, but required for subscriber-related info)
-  1. To get to an authorize page for your application, change and load the following URL in your browser. Replace `INSERT_CLIENT_ID_HERE` with your client ID you retrieved previously.
-
-```
-https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=INSERT_CLIENT_ID_HERE&redirect_uri=http://localhost&scope=channel_subscriptions
-```
-
-* 
+  1. To get to an authorize page for your application, change and load the following URL in your browser. Replace `INSERT_CLIENT_ID_HERE` with your client ID you retrieved previously. The URL: `https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=INSERT_CLIENT_ID_HERE&redirect_uri=http://localhost&scope=channel_subscriptions`
   1. Click "Authorize."
-  1. You should be at the following URL:
-
-```
-http://localhost/#access_token=123asdf123asdf123asdf123asdf123&scope=channel_subscriptions
-```
-
-* 
+  1. You should be at the following URL: `http://localhost/#access_token=123asdf123asdf123asdf123asdf123&scope=channel_subscriptions`
   1. Copy the `access_token` from the hash in the URL into the `config.json` file.
   
   ```javascript
