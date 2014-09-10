@@ -7,17 +7,18 @@ Retrieves follower and/or subscriber information from the Twitch API and saves i
 ##Setup
 
 ###Prerequisites
-* Joyent Node.js&reg;
+* Joyent Node.js
 * A Twitch account
-    * Client ID from a registered application
-    * An OAuth token if you want access to subscription data (optional)
+   * Client ID from a registered application
+   * An OAuth token if you want access to subscription data (optional)
+
 ---
 ###Instructions
 
-####Install Node.js&reg;
+####Install Node.js
 
-1. Go to [the Node.js&reg; download page](http://nodejs.org/download/) and download the version for your system.
-1. Install Node.js&reg; for your system.
+1. Go to [the Node.js download page](http://nodejs.org/download/) and download the version for your system.
+1. Install Node.js for your system.
 
 ####Download the code
 
@@ -60,7 +61,7 @@ Then you can either run this file or create a shortcut in some other folder or p
 
 * Context menu:
     1. Right-click `followers.js` and choose "Open with" -> "Choose default program..."
-    1. Select Node. Node.js&reg; will appear as a green hexagon labeled as "Evented I/O for V8 JavaScript" by "Joyent, Inc."
+    1. Select Node. Node.js will appear as a green hexagon labeled as "Evented I/O for V8 JavaScript" by "Joyent, Inc."
 * Use the control panel:
     1. Open the file association helper in the control panel:
         1. Windows 7 and probably 8: Open the start menu and type "asso" and press enter. This will open the control panel to the "Set Associations" helper.
@@ -68,18 +69,18 @@ Then you can either run this file or create a shortcut in some other folder or p
             1. Click Programs.
             1. Click "Make a file type always open in a specific program" or similar.
     1. Then scroll to file ".js" on the left and double click the line or click "Change program..." near the top right-hand corner of the window.
-    1. Select Node. Node.js&reg; will appear as a green hexagon labeled as "Evented I/O for V8 JavaScript" by "Joyent, Inc."
+    1. Select Node. Node.js will appear as a green hexagon labeled as "Evented I/O for V8 JavaScript" by "Joyent, Inc."
     1. Hit OK to close the dialog and Close to exit the control panel.
 
 ######Mac
 
 1. Right-click `followers.js` and choose "Get info."
-1. Change "Open with" to Node.js&reg; or however it appears on Mac.
+1. Change "Open with" to Node.js or however it appears on Mac.
 
 ######Linux
 
 1. Right-click `followers.js` and choose "Properties."
-1. Go to the "Open with" tab and select Node.js&reg; or however it appears on Mac.
+1. Go to the "Open with" tab and select Node.js or however it appears on Mac.
 
 ---
 ####Modify The Configuration File
@@ -97,9 +98,10 @@ The file is formatted in [JSON](http://json.org/). There are plenty of online co
    * "**%RAW_JSON%**" - The raw output from the Twitch API.
 * "**delay_sec**" - Number - Number of seconds to wait between requests to the Twitch API. `5` is the default value.
 * "**delay_to**" - Boolean - Can be `true` or `false`. `false` is the default value. This tells the program to send a request every `delay_sec` seconds (false) or `delay_sec` after the last request to the Twitch API (true). ("to" means timeout like setTimeout)
+
 ---
-####Twitch Application Registration And Retrieving The Client ID
-You may use an application you've already registered for the purpose of obtaining a client ID.
+####Twitch Application Registration And Retrieving The Client ID And OAuth Token
+You may use an application you've already registered for the purpose of obtaining a client ID and OAuth token.
 
 1. Go to [Twitch.tv](http://twitch.tv) and log in to your account.
 1. Go to the [settings](http://www.twitch.tv/settings).
