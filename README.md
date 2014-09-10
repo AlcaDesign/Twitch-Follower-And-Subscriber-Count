@@ -48,10 +48,10 @@ If you have the folder open in Windows, you can press alt+d (to select the text 
 #####Shortcut to batch file (Windows)
 
 You can create a `.bat` file in the same folder with `follower.js` and write the following:
-`
+```
 node followers.js
 pause
-`
+```
 Then you can either run this file or create a shortcut in some other folder or pin it to your Start menu (or similar)
 
 #####Associate Node with `.js`
