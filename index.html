@@ -2,15 +2,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>AlcaDesign</title>
+<title>Twitch Count</title>
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,400' rel='stylesheet' type='text/css'>
+
+<!--<script src="jquery-2.1.1.js"></script>-->
 
 <style>
 	
 	html,body {
 		margin: 0;
-		font-family: 'Open Sans', Arial, sans-serif;
 		box-sizing: border-box;
 		color: hsla(0,0%,95%,1.00);
 		background-color: hsl(210, 21%, 18%);
@@ -21,9 +22,11 @@
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
+		font-family: 'Open Sans', Arial, sans-serif;
 	}
 	*::selection, *:before::selection, *:after::selection {
 		background-color: hsl(154, 72%, 48%);
+		color: white;
 	}
 	a {
 		text-decoration: none;
@@ -155,19 +158,68 @@
 		position: relative;
 		padding: .125em .25em;
 		margin-bottom: 1em;
-		border-bottom: 1px solid hsl(210, 21%, 18%);
+		border-bottom: 1px solid hsl(210, 21%, 10%);
 	}
 	[section] [title]:after {
-		border-bottom: 2px solid hsla(154, 72%, 48%, .3);
+		border-bottom: 3px solid hsla(154, 72%, 48%, .4);
 		width: 100%;
 		height: 100%;
 		content: '';
 		left: 0;
-		top: 2px;
+		top: 3px;
 		position: absolute;
 	}
-	[section] > div:not([title]) {
+	[section] [content] p {
 		text-indent: 2em;
+		text-align: justify;
+	}
+	
+	input[type="text"] {
+		background: none;
+		padding: 10px;
+		color: white;
+		border: 2px solid hsla(154, 72%, 48%, .8);
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+	input[type="text"][disabled] {
+		color: hsla(154, 25%, 48%, .4);
+		background-color: hsla(0,0%,0%,0.25);
+		border: 2px solid hsla(154, 72%, 48%, .3);
+	}
+	
+	
+	input[type="checkbox"] {
+		display: none;
+	}
+	input[type="checkbox"] ~ label {
+		font-size: 16px;
+		padding: 10px;
+		border: 2px solid hsla(154, 72%, 48%, .8);
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+	input[type="checkbox"]:checked ~ label {
+		color: hsla(154, 25%, 48%, .4);
+		background-color: hsla(0,0%,0%,0.25);
+		border: 2px solid hsla(154, 72%, 48%, .3);
+	}
+	input[type="checkbox"]:disabled ~ label {
+		color: hsla(154, 25%, 48%, .4);
+		background-color: hsla(0,0%,0%,0.25);
+		border: 2px solid hsla(154, 72%, 48%, .3);
+	}
+	
+	[tool] table tr {
+	}
+	[tool] table tr td:first-child {
+		cursor: pointer;
+		padding-right: .5em;
+	}
+	[tool] table tr:not(:last-child) td {
+		padding-bottom: .5em;
 	}
 	
 </style>
@@ -195,13 +247,41 @@
 		<div c=mid>
 			<div section id=features>
 				<div title>Features</div>
-				<div>Powered by Node.js, this script will get follower and/or subscriber information and save it to a file in a user-specified format. This file can be read and displayed with your favorite live stream program as it updates.</div>
+				<div content>
+					<p>Powered by Node.js, this script will get follower and/or subscriber information and save it to a file in a user-specified format. This file can be read and displayed with your favorite live stream program as it updates.</p>
+				</div>
 			</div>
 			<div section id=documentation>
 				<div title>Documentation</div>
+				<div content>
+					<p>Documentation goes here.</p>
+				</div>
 			</div>
 			<div section id=configtool>
 				<div title>Configuration Tool</div>
+				<div content>
+					<p>Tool goes here.</p>
+					<div tool>
+						<table><tbody>
+							<tr>
+								<td><label for="clientid">Client ID</label></td><td><input type="text" id="clientid" maxlength="31"></td>
+							</tr>
+							<tr>
+								<td><label for="oauthtoken">OAuth Token</label></td><td><input type="text" id="oauthtoken" disabled maxlength="31"></td>
+							</tr>
+							<tr>
+								<td><label for="channel">Channel Name</label></td><td><input type="text" id="channel" disabled></td>
+							</tr>
+							<tr>
+								<td><label for="info">Info</label></td>
+								<td>
+									<input type="checkbox" value="fol" id="info_0"><label for="info_0">Followers</label>
+									<input type="checkbox" value="sub" id="info_1"><label for="info_1">Subscribers</label>
+								</td>
+							</tr>
+						</tbody></table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -211,14 +291,25 @@
 
 <script>
 	
-	function onScroll() {
-		if(document.body.scrollTop > 90) {
-			document.querySelectorAll('[header]')[0].setAttribute('c','darkish');
-		}
-		else document.querySelectorAll('[header]')[0].setAttribute('c','');
-	}
+	/*var supports_html5_storage = (function(){try{return'localStorage'in window&&window['localStorage']!==null}catch(e){return false}})();
 	
-	window.addEventListener('scroll', onScroll, false);
+	function retrieveLSData() {
+	}
+	function setLSData() {
+	}
+	function deleteLSData() {
+	}*/
+	
+	window.addEventListener('scroll', function() {
+			if(document.body.scrollTop > 90) document.querySelectorAll('[header]')[0].setAttribute('c','darkish');
+			else document.querySelectorAll('[header]')[0].setAttribute('c','');
+		}, false);
+	
+	document.getElementById('clientid').addEventListener('keyup', function() {
+			if(this.value.length == 31) document.getElementById('oauthtoken').disabled = '';
+			else document.getElementById('oauthtoken').disabled = 'disabled';
+		}, false);
+		
 	
 </script>
 
