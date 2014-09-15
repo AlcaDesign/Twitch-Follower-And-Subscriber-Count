@@ -44,7 +44,7 @@
 	}
 	[c="light"] {
 		background-color: hsl(0, 0%, 95%);
-		color: hsla(0,0%,0%,.54) !important;
+		color: hsla(0,0%,0%,.78) !important;
 	}
 	
 	[limit] {
@@ -174,16 +174,18 @@
 		text-align: justify;
 	}
 	
-	input[type="text"] {
+	
+	input[type="text"], input[type="number"] {
 		background: none;
 		padding: 10px;
 		color: white;
+		width: 250px;
 		border: 2px solid hsla(154, 72%, 48%, .8);
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
 	}
-	input[type="text"][disabled] {
+	input[type="text"]:disabled, input[type="number"]:disabled {
 		color: hsla(154, 25%, 48%, .4);
 		background-color: hsla(0,0%,0%,0.25);
 		border: 2px solid hsla(154, 72%, 48%, .3);
@@ -193,26 +195,92 @@
 	input[type="checkbox"] {
 		display: none;
 	}
-	input[type="checkbox"] ~ label {
-		font-size: 16px;
-		padding: 10px;
-		border: 2px solid hsla(154, 72%, 48%, .8);
-		-webkit-border-radius: 4px;
-		-moz-border-radius: 4px;
-		border-radius: 4px;
+	input[type="checkbox"] + label {
+		font-size: 0.666666em;
+		cursor: pointer;
+		padding: 0.5em 1.075em;;
+		border: 2px solid hsla(154, 72%, 48%, .4);
+		user-select: none;
+		-webkit-user-select: none;
 	}
-	input[type="checkbox"]:checked ~ label {
+	input[type="checkbox"] + label:first-of-type {
+		margin-right: .35em;
+	}
+	input[type="checkbox"]:checked + label {
+		color: hsl(154, 60%, 50%);
+		border: 2px solid hsla(154, 72%, 48%, .8);
+		background-color: hsla(0,0%,0%,0.05);
+		box-shadow: 0px 0px 8px 4px hsla(154,50%,50%,.25) inset;
+	}
+	/*input[type="checkbox"]:checked + label a {
+		position: relative;
+		top: -3px;
+		left: -1px;
+	}*/
+	input[type="checkbox"]:disabled + label {
 		color: hsla(154, 25%, 48%, .4);
 		background-color: hsla(0,0%,0%,0.25);
 		border: 2px solid hsla(154, 72%, 48%, .3);
+		cursor: default;
 	}
-	input[type="checkbox"]:disabled ~ label {
+	input[type="checkbox"]:checked:disabled + label {
+		color: hsla(154, 60%, 50%,.4);
+		background-color: hsla(0,0%,0%,0.25);
+		border: 2px solid hsla(154, 72%, 48%, .3);
+	}
+	
+	[infotd] div {
+		padding-bottom: 0.833333em;
+		position: relative;
+		width: 250px;
+		height: 55px;
+	}
+	[infotd] div label:first-of-type {
+		position: absolute;
+		left: 0;
+		top: 6px;
+	}
+	[infotd] div label:last-child {
+		position: absolute;
+		right: 0;
+		top: 6px;
+	}
+	
+	input[type="checkbox"]#timeout + label {
+		min-width: 250px;
+		margin: 0 auto;
+		display: inline-block;
+	}
+	input[type="checkbox"]#timeout + label:after {
+		content: 'Check every x seconds';
+	}
+	input[type="checkbox"]#timeout:checked + label:after {
+		content: 'Check x seconds after last';
+	}
+	
+	textarea {
+		width: 250px;
+		height: 100px;
+		background: none;
+		color: inherit;
+		padding: 10px;
+		border: 2px solid hsla(154, 72%, 48%, .8);
+		resize: vertical;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+	textarea:disabled {
 		color: hsla(154, 25%, 48%, .4);
 		background-color: hsla(0,0%,0%,0.25);
 		border: 2px solid hsla(154, 72%, 48%, .3);
 	}
 	
 	[tool] table tr {
+	}
+	[tool] table tr[top] {
+		vertical-align: top;
 	}
 	[tool] table tr td:first-child {
 		cursor: pointer;
@@ -222,12 +290,52 @@
 		padding-bottom: .5em;
 	}
 	
+	[id$="preview"], td[output] {
+		padding-left: 1em;
+		width: 300px;
+		height: 1px;
+	}
+	[id$="preview"] div, div[output] {
+		padding: .5em 1em;
+		font-size: .6em;
+		word-break: break-all;
+		max-width: 300px;
+		text-align: justify;
+		white-space: pre-wrap;
+	}
+	div[output] {
+		padding: 0;
+		width: 100% !important;
+		height: 100% !important;
+		display: block !important;
+		max-height: 100% !important;
+	}
+	div[output] textarea {
+		padding: 10px;
+		overflow: auto;
+		border: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+		resize: none;
+		width: 100% !important;
+		height: 100% !important;
+		display: block !important;
+		max-height: 100% !important;
+	}
+	
+	span[keyword] {
+		color: hsl(154, 60%, 32.5%);
+		font-weight: 700;
+	}
+	
+	
 </style>
 
 </head>
 
 <body>
-<a target="_blank" href="https://github.com/AlcaDesign"><img style="z-index: 1000001; position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+<a target="_blank" href="https://github.com/AlcaDesign"><img style="z-index: 1000; position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
 <div header>
 	<div limit>
 		<div><span style="margin-right: .12em">T</span>witch Coun<span style="margin-left: .05em">t</span></div>
@@ -260,24 +368,41 @@
 			<div section id=configtool>
 				<div title>Configuration Tool</div>
 				<div content>
-					<p>Tool goes here.</p>
+					<p>This tool will help you modify your configuration file (config.json).</p>
 					<div tool>
 						<table><tbody>
 							<tr>
-								<td><label for="clientid">Client ID</label></td><td><input type="text" id="clientid" maxlength="31"></td>
+								<td><label for="clientid">Client ID</label></td><td><input type="text" id="clientid" maxlength="31" placeholder="asdf123asdf123asdf123asdf123asd"></td><td style="padding-left: 1.5em">Output:</td>
 							</tr>
 							<tr>
-								<td><label for="oauthtoken">OAuth Token</label></td><td><input type="text" id="oauthtoken" disabled maxlength="31"></td>
+								<td><label for="oauthtoken">OAuth Token</label></td><td><input type="text" id="oauthtoken" disabled maxlength="31" placeholder="123asdf123asdf123asdf123asdf123"></td><td rowspan="3" output><div output><textarea c=light readonly>Output missing? Are you using a browser with Javascript?</textarea></div></td>
 							</tr>
 							<tr>
 								<td><label for="channel">Channel Name</label></td><td><input type="text" id="channel" disabled></td>
 							</tr>
-							<tr>
-								<td><label for="info">Info</label></td>
-								<td>
-									<input type="checkbox" value="fol" id="info_0"><label for="info_0">Followers</label>
-									<input type="checkbox" value="sub" id="info_1"><label for="info_1">Subscribers</label>
+							<tr >
+								<td><label for="info">Get Info</label></td>
+								<td infotd>
+									<div>
+										<input type="checkbox" value="fol" id="info_0" disabled checked><label for="info_0">Followers</label>
+										<input type="checkbox" value="sub" id="info_1" disabled><label for="info_1">Subscribers</label>
+									</div>
 								</td>
+							</tr>
+							<tr top>
+								<td><label for="fol">Follower Message</label></td><td><textarea message id="fol" disabled>%FOLLOWER_COUNT% followers. Last follower: %LAST_FOLLOWER%</textarea></td><td id=folpreview><div c=light>%FOLLOWER_COUNT% followers. Last follower: %LAST_FOLLOWER%</div></td>
+							</tr>
+							<tr top>
+								<td><label for="sub">Subscriber Message</label></td><td><textarea message id="sub" disabled>%SUBSCRIBER_COUNT% subscribers. Last subscriber: %LAST_SUBSCRIBER%</textarea></td><td id=subpreview><div c=light>%SUBSCRIBER_COUNT% subscribers. Last subscriber: %LAST_SUBSCRIBER%</div></td>
+							</tr>
+							<tr top>
+								<td><label for="both">Combined Message</label></td><td><textarea message id="both" disabled>%FOLLOWER_COUNT% followers and %SUBSCRIBER_COUNT% subscribers.</textarea></td><td id=bothpreview><div c=light>%FOLLOWER_COUNT% followers and %SUBSCRIBER_COUNT% subscribers.</div></td>
+							</tr>
+							<tr>
+								<td><label for="delay">Delay (seconds)</label></td><td><input type="number" id="delay" disabled value="5" min="1"></td>
+							</tr>
+							<tr>
+								<td><label for="timeout" style="cursor: pointer;">Use Timeout?</label></td><td style="text-align: center; padding-right: 7px"><input type="checkbox" value="timeout" id="timeout" disabled checked><label for="timeout"></label></td>
 							</tr>
 						</tbody></table>
 					</div>
@@ -300,15 +425,295 @@
 	function deleteLSData() {
 	}*/
 	
+	if(window.FileReader) {
+		
+		window.addEventListener('dragover', function() {
+				
+				console.log('dragover');
+				
+				return false;
+			}, false);
+		window.addEventListener('dragend', function() {
+				
+				console.log('dragend');
+				
+				return false;
+			}, false);
+		window.addEventListener('drop', function(e) {
+				
+				console.log('drop');
+				
+				this.className = '';
+				e.preventDefault();
+				
+				var file = e.dataTransfer.files[0],
+					reader = new FileReader();
+					reader.addEventListener('load', function(event) {
+						console.log('event', event.target.result);
+					}, false);
+				console.log('otherwise', file);
+				reader.readAsText(file);
+				
+				return false;
+				
+			}, false);
+	}
+	
 	window.addEventListener('scroll', function() {
-			if(document.body.scrollTop > 90) document.querySelectorAll('[header]')[0].setAttribute('c','darkish');
-			else document.querySelectorAll('[header]')[0].setAttribute('c','');
+			if(document.body.scrollTop > 90) document.querySelector('[header]').setAttribute('c','darkish');
+			else document.querySelector('[header]').setAttribute('c','');
 		}, false);
 	
-	document.getElementById('clientid').addEventListener('keyup', function() {
-			if(this.value.length == 31) document.getElementById('oauthtoken').disabled = '';
-			else document.getElementById('oauthtoken').disabled = 'disabled';
+	function prettyJSON(d){if(typeof d == 'string') return JSON.stringify(d, undefined, 4); return JSON.stringify(d, undefined, 4)}
+	function addListeners(query, ev, funct) {
+		items = document.querySelectorAll(query);
+		for(var i = 0; i < items.length; i++)
+			items[i].addEventListener(ev, funct, false);
+	}
+	
+	function updateOutput() {
+		document.querySelector('[output] textarea').innerText = prettyJSON({
+				client_id: document.querySelector('#clientid').value,
+				oauth_token: document.querySelector('#oauthtoken').value,
+				channel: document.querySelector('#channel').value,
+				info: document.querySelector('#info_0').checked && document.querySelector('#info_1').checked ? 'both' : (document.querySelector('#info_0').checked ? 'fol' : (document.querySelector('#info_1').checked ? 'sub': '')),
+				message_args: ['%CHANNEL%', '%FOLLOWER_COUNT%', '%SUBSCRIBER_COUNT%', '%LAST_FOLLOWER%', '%LAST_SUBSCRIBER%', '%RAW_JSON%'],
+				follower_message: document.querySelector('#fol').value || '%FOLLOWER_COUNT% followers. Last follower: %LAST_FOLLOWER%',
+				subscriber_message: document.querySelector('#sub').value || '%SUBSCRIBER_COUNT% subscribers. Last subscriber: %LAST_SUBSCRIBER%',
+				both_message: document.querySelector('#both').value || '%FOLLOWER_COUNT% followers and %SUBSCRIBER_COUNT% subscribers.',
+				delay_sec: document.querySelector('#delay').value || 5,
+				delay_to: document.querySelector('#timeout').checked,
+				__comment: 'Visit the repository on GitHub for documentation (github.com/AlcaDesign/Twitch-Follower-And-Subscriber-Count) or the webpage for something better looking and a configuration tool (alcadesign.github.io/Twitch-Follower-And-Subscriber-Count).'
+			});
+	}
+	
+	function messageHandle(w) {
+		var fakeUser = [
+				{
+					"created_at": "date",
+					"_links": {
+						"self": ""
+					},
+					"user": {
+						"_id": 0,
+						"name": "test_channel",
+						"created_at": "date",
+						"updated_at": "date",
+						"_links": {
+							"self": "https://api.twitch.tv/kraken/users/test_channel"
+						},
+						"display_name": "Test_Channel",
+						"logo": "jpeg",
+						"bio": null,
+						"type": "user"
+					}
+				}
+			];
+		
+		function format(a,t){return t.replace(/%\w+%/g,function(k){return a[k] ? '<span keyword>'+a[k]+'</span>' : k})}
+		
+		function handle(which, val) {
+			
+			var msg = document.querySelector('#' + which);
+			
+			msg.style.height = '1px';
+			msg.style.height = msg.scrollHeight + 'px';
+			
+			if(!val) val = msg.value;
+			
+			function htmlEscape(str) {
+				return String(str)
+						.replace(/&/g, '&amp;')
+						/*.replace(/"/g, '&quot;')
+						.replace(/'/g, '&#39;')*/
+						.replace(/</g, '&lt;')
+						.replace(/>/g, '&gt;');
+			}
+			
+			val = htmlEscape(val);
+			
+			if(which == 'fol') {
+				document.querySelector('td#folpreview > *:first-child').innerHTML = format(
+						{
+							'%FOLLOWER_COUNT%': 798,
+							'%LAST_FOLLOWER%': 'Test_Channel',
+							'%CHANNEL%': document.getElementById('channel').value || '',
+							'%RAW_JSON%': JSON.stringify({
+									"follows": fakeUser,
+									"_total": 798,
+									"_links": {
+										"self": "https://api.twitch.tv/kraken/channels/test_channel/follows?direction=DESC&limit=1&offset=0",
+										"next": "https://api.twitch.tv/kraken/channels/test_channel/follows?direction=DESC&limit=1&offset=1"
+									}
+								})
+						}, val);
+			}
+			else if(which == 'sub') {
+				document.querySelector('td#subpreview > *:first-child').innerHTML = format(
+						{
+							'%SUBSCRIBER_COUNT%': 45,
+							'%LAST_SUBSCRIBER%': 'Test_Channel',
+							'%CHANNEL%': document.getElementById('channel').value || '',
+							'%RAW_JSON%': JSON.stringify({
+									"subscriptions": fakeUser,
+									"_total": 45,
+									"_links": {
+										"self": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions?direction=DESC&limit=1&offset=0",
+										"next": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions?direction=DESC&limit=1&offset=1"
+									}
+								})
+						}, val);
+			}
+			else if(which == 'both') {
+				document.querySelector('td#bothpreview > *:first-child').innerHTML = format(
+						{
+							'%FOLLOWER_COUNT%': 798,
+							'%SUBSCRIBER_COUNT%': 45,
+							'%LAST_FOLLOWER%': 'Test_Channel',
+							'%LAST_SUBSCRIBER%': 'Sub_Test_Channel',
+							'%CHANNEL%': document.getElementById('channel').value || '',
+							'%RAW_JSON%': JSON.stringify({
+								follows: {
+										"follows": fakeUser,
+										"_total": 798,
+										"_links": {
+											"self": "https://api.twitch.tv/kraken/channels/test_channel/follows?direction=DESC&limit=1&offset=0",
+											"next": "https://api.twitch.tv/kraken/channels/test_channel/follows?direction=DESC&limit=1&offset=1"
+										}
+									},
+								subscriptions: {
+										"subscriptions": fakeUser,
+										"_total": 45,
+										"_links": {
+											"self": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions?direction=DESC&limit=1&offset=0",
+											"next": "https://api.twitch.tv/kraken/channels/test_channel/subscriptions?direction=DESC&limit=1&offset=1"
+										}
+									}
+								})
+						}, val);
+			}
+		}
+		
+		if(!!this.id)	handle(this.id, this.value);
+		else		handle(w);
+	}
+	
+	addListeners('[message]', 'keyup', messageHandle, false);
+	
+	function setDisabled(query, state) {
+		var items = document.querySelectorAll(query);
+		for(var i = 0; i < items.length; i++)
+			items[i].disabled = state ? 'disabled' : '';
+	}
+	function setChecked(query, state) {
+		var items = document.querySelectorAll(query);
+		for(var i = 0; i < items.length; i++)
+			items[i].checked = state ? 'checked' : '';
+	}
+	function isDisabled(query) {
+		return document.querySelector(query).disabled;
+	}
+	function isChecked(query) {
+		return document.querySelector(query).checked;
+	}
+	
+	//document.getElementById('clientid').addEventListener('keyup',
+	function formHandle() {
+		
+		var cid = document.getElementById('clientid'),
+			oat = document.getElementById('oauthtoken');
+			
+		updateOutput();
+		
+		cid.value = cid.value.trim().replace(/\s/g, '');
+		oat.value = oat.value.trim().replace(/\s/g, '');
+		
+		if(cid.value.length == 31) {
+			setDisabled('#oauthtoken, #channel, #delay, #timeout', false);
+			
+			if(oat.value.length == 31) {
+				setDisabled('#info_0, #info_1', false);
+				if(isChecked('#info_0')) {
+					setDisabled('#fol', false);
+				}
+				else {
+					setDisabled('#fol', true);
+				}
+				if(isChecked('#info_1')) {
+					setDisabled('#sub', false);
+				}
+				else {
+					setDisabled('#sub', true);
+				}
+				if(isChecked('#info_0') && isChecked('#info_1')) {
+					setDisabled('#both', false);
+				}
+				else {
+					setDisabled('#both', true);
+				}
+			}
+			else {
+				setDisabled('#info_0, #info_1, #sub, #both', true);
+				setDisabled('#fol', false);
+				setChecked('#info_0', true);
+				setChecked('#info_1', false);
+			}
+		}
+		else {
+			setDisabled('#oauthtoken, #channel, [infotd] input, #fol, #sub, #both, #delay, #timeout', true);
+		}
+		
+	}
+	addListeners('#clientid, #oauthtoken, #channel, [message]', 'keyup', formHandle);
+	//addListeners('label', 'click', formHandle);
+	addListeners('input[id^="info_"], input[type="number"], #timeout', 'change', formHandle);
+	
+	window.addEventListener('load', function() {
+			
+			messageHandle('fol');
+			messageHandle('sub');
+			messageHandle('both');
+			
+			updateOutput();
+			
 		}, false);
+	
+	/*document.getElementById('clientid').addEventListener('keyup', function() {
+			if(this.value.length == 31) setStates('#oauthtoken, #channel, #fol, #delay, #timeout', '');
+			else setStates('#oauthtoken, #channel, #info_0, #info_1, #fol, #sub, #both, #delay, #timeout', 'disabled');
+			if(document.getElementById('oauthtoken').value.length == 31) setStates('#info_0, #info_1', '');
+			else setStates('#info_0, #info_1, #sub, #both', 'disabled');
+		}, false);
+	
+	document.getElementById('oauthtoken').addEventListener('keyup', function() {
+			if(this.value.length == 31) setStates('#info_0, #info_1', '');
+			else setStates('#info_0, #info_1, #sub, #both', 'disabled');
+		}, false);
+	
+	document.getElementById('delay').addEventListener('keypress', function() {
+			if(this.value < 1) this.value = 1;
+		}, false);
+	
+	document.querySelector('#info_0 + label').addEventListener('click', function() {
+			var ele = this.parentElement.querySelector('#info_0:checked');
+			if(exe) setStates('#fol, #both', 'disabled');
+			else if(!ele.disabled) setStates('#fol', '');
+		}, false);
+	document.querySelector('#info_1 + label').addEventListener('click', function() {
+			var ele = this.parentElement.querySelector('#info_1:checked');
+			if(ele.disabled) setStates('#sub, #both', 'disabled');
+			else setStates('#sub', '');
+		}, false);
+	
+	addListeners('input[id^="info_"]', 'change', function() {
+			var children = this.parentElement.children;
+			if(children.info_0.checked && children.info_1.checked) {
+				document.getElementById('both').disabled = '';
+			}
+			else {
+				document.getElementById('both').disabled = 'disabled';
+			}
+		});*/
 		
 	
 </script>
